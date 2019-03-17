@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+
+		{% if title %}
+	<title>{{title}}</title>
+	{% else %}
+	<title>Yo amazon </title>
+	{% endif %}
+
+	</title>
+</head>
+<body>
+	{%block body%}
+
+
+
+	{%endblock body%}
+
+</body>
+
+<footer>
+	<p>copyright 2019</p>
+	{%if not home%}
+	<p>go to <a href="{{url_for('home')}}">homepage</a></p>
+	{% endif %}
+</footer>
+</html>
