@@ -10,8 +10,8 @@ def home():
 
 @app.route('/about') 
 def about():
-	
-	return render_template('about.html')
+	abcd="amazon big project"
+	return render_template('about.html',h1=abcd)
 
 
 @app.route('/contact')
@@ -23,9 +23,19 @@ def contact():
 def welcome():
 	return render_template('welcome.html')
 
+@app.route('/layout')
+def layout():
+	return render_template('layout.html')
+
 @app.route('/login',methods=['POST'])
 def login():
 	user={'username':'nikitha','password':'hello'}
+
+@app.route('/title')
+def title():
+	a='this is amazing'
+	return render_template('title.html',title=a)
+
 
 	username= request.form['username']
 	password= request.form['password']
