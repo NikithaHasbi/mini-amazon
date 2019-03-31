@@ -51,5 +51,29 @@
 </form>
 {% endif %}
 
+{% if session['c_type']== 'seller' %}
+
+<form action="/add_products" method="POST">
+	Product Info: <br>
+	Product Name: <br>
+	<input type="text" name="pname" placeholder="Enter the Product name">
+	
+	<br>
+	Price: <br>
+	<input type="text" name="price" placeholder="Enter the price">
+	<br>
+	Description: <br>
+	<textarea rows="5" columns="50" name="description" placeholder="Enter description here.."></textarea>
+	<br>
+	<input type="submit" value="submit"><br>
+
+</form>
+<p>to check all the products you have added <a href='/products_page'>click here</a></p>
+
+	{% else %}
+
+<p><a href='/products_page'>click here to buy products </a></p>
+{% endif %}
+
 </body>
 </html>
