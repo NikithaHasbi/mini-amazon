@@ -1,9 +1,19 @@
 from flask import Flask,render_template,url_for,redirect,request,session
-from models.model import user_exists,create_user,login_user,product_exists,add_prod,find_products,add_product_to_cart
+from models.model import user_exists,create_user,login_user,product_exists,add_prod,find_products,add_product_to_cart,remove_prod_from_cart,cart_info,clear_cart
+from flask_mail import Mail, Message
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY']= 'helllo'
 
+mail = Mail(app)
+app.config['SECRET_KEY']= 'helllo'
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = os.environ.get('DB_USER')
+app.config['MAIL_PASSWORD'] = os.environ.get('DB_PASS')
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 @app.route('/')                    
 def home():
@@ -84,7 +94,7 @@ def add_products():
 
 		seller['pname']= request.form['pname']
 		seller['sname']=session['username']
-		seller['price']=request.form['price']
+		seller['price']=int (request.form['price'])
 		seller['description']=request.form['description']
 
 		if product_exists(seller['pname']) is False:
@@ -99,16 +109,46 @@ def add_products():
 @app.route('/products_page')
 def products_page():
 
-		return render_template('products.html',products=find_products(session))
+	return render_template('products.html',products=find_products(session))
 	
 @app.route('/add_cart', methods=['POST'])
 def add_cart():
-	product_id=request.form['pid']
 
+	product_id=str(request.form['pid'])
 	add_product_to_cart(product_id,session['username'])
+	return redirect(url_for('cart'))
+
+@app.route('/remove_cart', methods=['POST'])
+def remove_cart():
+
+	product_id= str(request.form['pid'])
+	remove_prod_from_cart(product_id,session['username'])
+	return redirect(url_for('cart'))
+
+
+@app.route('/cart', methods=['POST','GET'])
+def cart():
+
+	temp=cart_info(session['username'])
+	product_info= temp[0]
+	quantity= temp[1]
+
+	total= 0
+
+	for product, quant in zip(product_info,quantity):
+		total = total + (product['price'] * quant)
+		session['cart_total']= total
+	return render_template('cart.html',cart=zip(product_info,quantity), total= session['cart_total'])
+
+
+@app.route('/buy', methods=['POST','GET'])
+def buy():
+
+	msg = Message('Hello', sender = os.environ.get('DB_USER'), recipients = ['nikithahasbi07@gmail.com'])
+	msg.body = f"Hello {session['username']},Flask message sent from Flask-Mail"
+	mail.send(msg)
+	clear_cart(session['username'])
 	return redirect(url_for('home'))
-
-
 
 
 @app.route('/logout')

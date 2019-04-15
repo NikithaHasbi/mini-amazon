@@ -3,7 +3,9 @@
 {% block body %}
 
 {% for product in products %}
+
 	<ul>
+		
 		<li><b>product name </b> : {{product['pname']}}</li>
 		<li><b>seller name </b> : {{product['sname']}}</li>
 		<li><b>price</b> : {{product['price']}} </li>
@@ -16,6 +18,7 @@
 
 
 	</ul>
+
 {% endfor %}
 
 {% endblock %}

@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 client = MongoClient()
 db = client['amazon']
@@ -48,6 +49,7 @@ def add_prod(seller):
 # 	return result
 
 def find_products(session):
+
 	if session['c_type']== 'buyer':
 		result=db['products'].find({})
 		return result
@@ -55,8 +57,56 @@ def find_products(session):
 	return result
 
 def add_product_to_cart(product_id,username):
-	db.users.update( {'username':username},{ '$addToSet': { 'cart': { '$each': [ product_id ] } } })
+
+	query = {'username':username}
+	result = db['users'].find_one(query)
+
+
+	if result['cart'].get(product_id):
+		db['users'].update({'username':username },{"$inc":{f"cart.{product_id}":1}})
+		return True
+	db['users'].update({'username':username },{"$set":{f"cart.{product_id}":1}})
+
+	# db.users.update( {'username':username},{ '$addToSet': { 'cart': { '$each': [ product_id ] } } })
 	
+def remove_prod_from_cart(product_id,username):
+
+	query = {'username':username}
+	result = db['users'].find_one(query)
+
+	if result['cart'].get(product_id)<=1:
+		db['users'].update({'username':username },{"$unset":{f"cart.{product_id}":1}})
+		return True		
+	db['users'].update({'username':username },{"$inc":{f"cart.{product_id}":-1}})
+	
+def cart_info(username):
+
+	query = {'username':username}
+	result = db['users'].find_one(query)['cart'].keys()
+
+	products = []
+	quantity = []
+	for product_id in result:
+		products.append( db['products'].find_one({'_id':ObjectId(product_id)}))
+		quantity.append(db['users'].find_one({'username':username})['cart'][product_id])
+					
+	return products,quantity
+ 
+def clear_cart(username):
+
+ 	db['users'].update({'username':username },{"$unset":{"cart":1}})
+ 	db['users'].update({'username':username },{"$set":{"cart":{}}})
+
+
+
+
+
+
+
+
+ 	
+
+
 
 
 
