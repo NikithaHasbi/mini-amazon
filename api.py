@@ -1,12 +1,14 @@
 from flask import Flask,render_template,url_for,redirect,request,session
 from models.model import user_exists,create_user,login_user,product_exists,add_prod,find_products,add_product_to_cart,remove_prod_from_cart,cart_info,clear_cart
 from flask_mail import Mail, Message
+from PIL import Image
 import os
 
 app = Flask(__name__)
 
 mail = Mail(app)
 app.config['SECRET_KEY']= 'helllo'
+
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = os.environ.get('DB_USER')
@@ -149,6 +151,24 @@ def buy():
 	mail.send(msg)
 	clear_cart(session['username'])
 	return redirect(url_for('home'))
+
+# @app.route('/user_pic', methods=['POST','GET'])
+# def user_pic():
+# 	if request.method=='POST' :
+# 		pic=[]
+
+# 		pic['user_pic'] = request.form['user_pic']
+
+# 		if user_info['c_type']== 'buyer':
+# 			add_pic(user_pic,session['username'])
+# 			image= Image.open('user_pic')
+# 		return render_template('home.html')
+
+# 	else:
+
+# 		return redirect(url_for('home'))
+
+
 
 
 @app.route('/logout')

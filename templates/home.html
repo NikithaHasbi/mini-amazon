@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+	<title>Let's Shop</title>
 </head>
 <body>
 	<h1> Welcome to My Amazon! </h1>
 
 {% if session %}
-<p>hello {{session['username']}}</p>
-<p>You have logged in as {{session['c_type']}}</p>
+<h2>Hello {{session['username']}}</h2>
+<h3>You have logged in as {{session['c_type']}}</h3>
+
+<!-- <form action="/user_pic" method="POST">
+
+	<h2> Have you uploaded your picture yet? If not please do it below! </h2><br> -->
+
+	<!-- <input type="file" name="filename" accept="image/gif, image/jpeg, image/png"><br>
+    <input type="submit" value="submit"> -->
+
+
+	<!-- <input type='file' onchange="readURL(this);" />
+	<img id="blah" src="http://placehold.it/180" alt="your image" /> -->
+<!-- </form> -->
+
 
 <p> <a href="/logout">LOGOUT</a></p>
 {% else %}
 
-
 <form action="/login" method="POST">
-
+	<h3> Let's get you started! </h3>
 	Username:<br>
 	<input type="text" name="username" placeholder="enter username">
 	<br>
@@ -43,38 +55,41 @@
 	<input type="password" name="rpassword" placeholder="re-enter password">
 	<br><br>
 	Customer Type: <br>
-	<input type="radio" name="c_type" value="buyer" checked> buyer<br>
-	<input type="radio" name="c_type" value="seller">seller<br>
-	<input type="submit" value="submit"><br>
+	<input type="radio" name="c_type" value="buyer" checked> Buyer<br>
+	<input type="radio" name="c_type" value="seller">Seller<br>
+	Upload Your Image: <br>
+	<input type="file" name="users" accept="image/gif, image/jpeg, image/png"><br>
+ 	<input type="submit" value="submit"><br>
 
 
 </form>
 {% endif %}
 
-{% if session['c_type']== 'seller' %}
+	{% if session['c_type']== 'seller' %}
 
-	<form action="/add_products" method="POST">
-		Product Info: <br>
-		Product Name: <br>
-		<input type="text" name="pname" placeholder="Enter the Product name">
+		<form action="/add_products" method="POST">
+			Product Name: <br>
+			<input type="text" name="pname" placeholder="Enter the Product name">
 		
-		<br>
-		Price: <br>
-		<input type="text" name="price" placeholder="Enter the price">
-		<br>
-		Description: <br>
-		<textarea rows="5" columns="50" name="description" placeholder="Enter description here.."></textarea>
-		<br>
-		<input type="submit" value="submit"><br>
+			<br>
+			Price: <br>
+			<input type="text" name="price" placeholder="Enter the price">
+			<br>
+			Description: <br>
+			<textarea rows="5" columns="50" name="description" placeholder="Enter description here.."></textarea>
+			<br>
+			Upload Product's Image: <br> 
+		    <input type="file" name="products" accept="image/gif, image/jpeg, image/png"><br>
+			<input type="submit" value="submit"><br>
 
-	</form>
-<p>to check all the products you have added <a href='/products_page'>click here</a></p>
+		</form>
+		<p>To check all the products you have added <a href='/products_page'>click here</a></p>
 
-{% else %}
+	{% else %}
 
-<a href='/products_page'>click here to buy products </a>
+		<a href='/products_page'>Click here to buy products </a>
 
-{% endif %}
+	{% endif %}
 
 </body>
 </html>

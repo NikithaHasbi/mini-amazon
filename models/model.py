@@ -38,7 +38,6 @@ def product_exists(pname):
 def add_prod(seller):
 	db['products'].insert_one(seller)
 
-
 # def buyer_products():
 # 	result=db['products'].find({})
 # 	return result

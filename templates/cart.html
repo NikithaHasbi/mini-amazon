@@ -14,11 +14,11 @@
 		<form action="/remove_cart" method="POST">
 			
 			<input type="hidden" name="pid" value="{{ product_info['_id'] }}">
-			<input type="submit" value="remove one unit from cart">
+			<input type="submit" value="Remove one unit from cart">
 		</form>
 </ul>
 {% endfor %}
-	<b><p>The total cost of all the products is Rs:</p>{{ total }} </b>
+	<b><p>The total cost of all the products is Rs:{{ total }}</p></b>
 
 <form action="/buy" method="POST">
 	<input type="submit" name="buy" value="Buy">
