@@ -1,0 +1,83 @@
+.body{
+	
+}
+.abc{
+	/*background-image: url('static/images/p1.png');*/
+	/*background-repeat: no-repeat;*/
+	background: #000000;
+	padding: 1em 1em;
+	position: relative;
+	margin: 20px;
+	border: 15px lightblue;
+	border-style: outset;
+	border-width: 10px;
+	background-color: rgb(27,31,35);
+}
+
+.name{
+	font-family: monospace;
+	font-size: 20px;
+	line-height:15px;
+	padding: 5px;
+	text-align: left;
+	color: white;
+
+}
+.sname{
+	font-family: monospace;
+	font-size: 20px;
+	font-color: blue.3;
+	line-height:15px;
+	padding: 5px;
+	text-align: left;
+	color: white;
+}
+.price{
+	font-family: monospace;
+	color: white;
+	font-size: 20px;
+	line-height:15px;
+	padding: 5px;
+	text-align: left;
+}
+.pd{
+	font-family: monospace;
+	color: white;
+	font-size: 20px;
+	line-height:15px;
+	padding: 5px;
+	text-align: left;
+}
+.sub{
+	font-family: monospace;
+	background-color: #DAA520;
+	border: none;
+	colour:white;
+	padding:10px;
+	text-align: centre;
+	font-size: 15px;
+	border-radius: 10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.sub:hover {
+  background-color: #000000; /* Green */
+  color: white;
+}
+
+@keyframes abc {
+  from {background-color: #000000;}
+  to {background-color: #A0522D;}
+}
+
+/* The element to apply the animation to */
+div {
+  width: relative;
+  height: relative;
+  background-color: #000000;
+  animation-name: abc;
+  animation-duration: 4s;
+   animation-iteration-count: infinite;
+    animation-direction: reverse;
+}

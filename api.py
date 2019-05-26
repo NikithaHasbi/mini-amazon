@@ -17,6 +17,10 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
+# @app.route('/signup')
+# def signup():
+# 	return render_template('signup.html')
+
 @app.route('/')                    
 def home():
 	return render_template('home.html',home="home")
@@ -57,6 +61,7 @@ def login():
 			if user['password']==password:
 				session['username']= user['username']
 				session['c_type']=user['c_type']
+				return render_template('welcome.html')
 				return redirect(url_for('home'))
 			return "wrong password, go back and try again"
 		return "this user doesnt exist,go back and enter a valid password"
@@ -65,9 +70,9 @@ def login():
 
 @app.route('/signup',methods=['POST','GET'])
 def signup():
-
+	# return render_template('signup.html')
 	if request.method == 'POST':
-
+		# return render_template('signup.html')
 		user_info={}
 
 		user_info['username']= request.form['username']
@@ -79,13 +84,15 @@ def signup():
 		if user_exists(user_info['username']) is False:
 			if user_info['password'] == rpassword:
 				if user_info['c_type']== 'buyer':
-					user_info['cart']=[]
+					user_info['cart']= { }
 				create_user(user_info)
-				return render_template('welcome.html', user= user_info['username'])
-			return "passwords dont match please re enter the password"
-		return "user already exists. Enter another username"
+				return render_template('signup.html')
+				# return render_template('welcome.html', user= user_info['username'])
+			return "Passwords dont match. Please re-enter the password"
+		return "User already exists. Enter another username"
 	else: 
-		return redirect(url_for('home'))
+		return render_template('signup.html')
+		# return redirect(url_for('home'))
 
 @app.route('/add_products',methods=["POST","GET"])
 def add_products():
@@ -146,8 +153,9 @@ def cart():
 @app.route('/buy', methods=['POST','GET'])
 def buy():
 
-	msg = Message('Hello', sender = os.environ.get('DB_USER'), recipients = ['nikithahasbi07@gmail.com'])
-	msg.body = f"Hello {session['username']},Flask message sent from Flask-Mail"
+	msg = Message('Hello', sender = os.environ.get('DB_USER'), recipients = ['joslobo61@gmail.com'])
+	msg.body = f"Hello {session['username']}, thank you for purchasing from us! Please receive the call to confirm your order."
+	# msg.body = f" Hello {session['username']},Flask message sent from Flask-Mail "
 	mail.send(msg)
 	clear_cart(session['username'])
 	return redirect(url_for('home'))

@@ -1,32 +1,22 @@
 <!DOCTYPE html>
+<style type="text/css"></style>
+
 <html>
 <head>
 	<title>Let's Shop</title>
 </head>
 <body>
-	<h1> Welcome to My Amazon! </h1>
+	<h1 style="color: yellow;"> Ship.Shop.Shoe! </h1>
 
 {% if session %}
 <h2>Hello {{session['username']}}</h2>
 <h3>You have logged in as {{session['c_type']}}</h3>
 
-<!-- <form action="/user_pic" method="POST">
-
-	<h2> Have you uploaded your picture yet? If not please do it below! </h2><br> -->
-
-	<!-- <input type="file" name="filename" accept="image/gif, image/jpeg, image/png"><br>
-    <input type="submit" value="submit"> -->
-
-
-	<!-- <input type='file' onchange="readURL(this);" />
-	<img id="blah" src="http://placehold.it/180" alt="your image" /> -->
-<!-- </form> -->
-
 
 <p> <a href="/logout">LOGOUT</a></p>
 {% else %}
 
-<form action="/login" method="POST">
+<!-- <form action="/login" method="POST">
 	<h3> Let's get you started! </h3>
 	Username:<br>
 	<input type="text" name="username" placeholder="enter username">
@@ -36,11 +26,54 @@
 	<br><br>
 	<input type="submit" value="submit">
 
-</form>
+</form> -->
+<link href="static/style.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Login , registration, forgot password "./>
+		<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!--/start-login-one-->
+	<div class="login-01">
+		<div class="one-login  hvr-float-shadow">
+			<div class="one-login-head">
+					<img src="static/images/top-lock.png" alt=""/>
+					<h1>LOGIN</h1>
+					<span></span>
+			</div>
+			<form action="/login" method="POST">
+				<li>
+					<input type="text" class="text" name="username" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'username';}" ><a href="#" class=" icon user"></a>
+				</li>
+				<li>
+					<input type="password" value="password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"><a href="#" class=" icon lock"></a>
+				</li>
+						<div class="p-container">
+						<label class="checkbox"><input type="checkbox" name="checkbox" checked><i></i>Remember Me</label>
+						<h6><a href="ACCOUNT-RESET.html">Forgot Password ?</a> </h6>
+							<div class="clear"> </div>
+				</div>
+				<div class="submit">
+						<input type="submit"  value="SIGN IN" >
+				</div>
+				<div class="social-icons">
+					<p>Or you can Login with one of the following</p>
+						<ul class="soc_icons2">
+							<li class="pic"><a href="#"><i class="icon_4"></i></a></li>
+							<li class="pic"><a href="#"><i class="icon_5"></i></a></li>
+							<li class="pic"><a href="#"><i class="icon_6"></i></a></li>
+								<div class="clear"> </div>
+						</ul>
+				</div>
+					<h5>Don't have an account ?<a href="/signup"> Sign Up </a></h5>
+				</form>
+		</div>
+	</div>
+</body>
+<!-- <h3> No Account? Click here to <a href='/signup'>Register</a></h3> -->
 
-<h3> No Account? Sign up Below! </h3>
-
-<form action="/signup" method="POST">
+<!-- <form action="/signup" method="POST">
 
 	Username:<br>
 	<input type="text" name="username" placeholder="enter username">
@@ -62,27 +95,28 @@
  	<input type="submit" value="submit"><br>
 
 
-</form>
+</form> -->
 {% endif %}
 
 	{% if session['c_type']== 'seller' %}
-
-		<form action="/add_products" method="POST">
+<div class="niki">
+		<form class="lol" action="/add_products" method="POST">
 			Product Name: <br>
-			<input type="text" name="pname" placeholder="Enter the Product name">
+			<input class="a" type="text" name="pname" placeholder="Enter the Product name">
 		
 			<br>
 			Price: <br>
-			<input type="text" name="price" placeholder="Enter the price">
+			<input class="b" type="text" name="price" placeholder="Enter the price">
 			<br>
 			Description: <br>
-			<textarea rows="5" columns="50" name="description" placeholder="Enter description here.."></textarea>
+			<textarea class="c" rows="5" columns="50" name="description" placeholder="Enter description here.."></textarea>
 			<br>
-			Upload Product's Image: <br> 
-		    <input type="file" name="products" accept="image/gif, image/jpeg, image/png"><br>
-			<input type="submit" value="submit"><br>
+			<!-- Upload Product's Image: <br> 
+		    <input type="file" name="products" accept="image/gif, image/jpeg, image/png"><br> -->
+			<input class="button" type="submit" value="submit"><br>
 
 		</form>
+</div>
 		<p>To check all the products you have added <a href='/products_page'>click here</a></p>
 
 	{% else %}
@@ -93,3 +127,4 @@
 
 </body>
 </html>
+</style>

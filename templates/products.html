@@ -3,22 +3,31 @@
 {% block body %}
 
 {% for product in products %}
-
+<head>
+<link href="static/style11.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Login , registration, forgot password "./>
+<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="abc" >
 	<ul>
 		
-		<li><b>product name </b> : {{product['pname']}}</li>
-		<li><b>seller name </b> : {{product['sname']}}</li>
-		<li><b>price</b> : {{product['price']}} </li>
-		<li><b> product description </b> : {{product['description']}} </li>
+		<li class="name"><b>Product name </b> : {{product['pname']}}</li>
+		<li class="sname"><b>Seller name </b> : {{product['sname']}}</li>
+		<li class="price"><b>Price</b> : {{product['price']}} </li>
+		<li class="pd"><b>Product Description </b> : {{product['description']}} </li>
 
 		<form action="/add_cart" method='POST'>
 			<input type="hidden" name="pid" value= "{{product['_id']}}">
-			<input type="submit" value="add_to_cart">
+			<input class="sub" type="submit" value="add_to_cart">
 		</form>
 
 
 	</ul>
+</div>
 
+</body>
 {% endfor %}
 
 {% endblock %}

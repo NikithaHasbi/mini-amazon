@@ -3,25 +3,40 @@
 {% block body %}
 
 {% for product_info,quantity in cart %}
-
+<head>
+<link href="static/cart.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Login , registration, forgot password "./>
+<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="cart">
 <ul>
-		<li><b> product Name </b> : {{ product_info['name'] }} </li>
-		<li><b> product Description </b> : {{ product_info['description'] }} </li>
-		<li><b> product Price </b> : {{ product_info['price'] }} </li>
-		<li><b> product seller </b> : {{ product_info['seller'] }} </li>
-		<li><b> quantity </b> : {{ quantity }} </li>
+	<div class="abc hvr-float-shadow" >
+		<div class="sub">
+		<li><b> Product Name </b> : {{ product_info['pname'] }} </li>
+		<li><b> Product Description </b> : {{ product_info['description'] }} </li>
+		<li><b> Price </b> : {{ product_info['price'] }} </li>
+		<li><b> Seller </b> : {{ product_info['sname'] }} </li>
+		<li><b> Quantity </b> : {{ quantity }} </li>
 
 		<form action="/remove_cart" method="POST">
 			
 			<input type="hidden" name="pid" value="{{ product_info['_id'] }}">
-			<input type="submit" value="Remove one unit from cart">
+			<input class="button" type="submit" value="Remove one unit from cart">
 		</form>
+		</div>
+	</div>
 </ul>
+</div>
 {% endfor %}
+<div class="total">
 	<b><p>The total cost of all the products is Rs:{{ total }}</p></b>
+</div>
 
-<form action="/buy" method="POST">
+<form class="buy" action="/buy" method="POST">
 	<input type="submit" name="buy" value="Buy">
 </form>
+</body>
 
 {% endblock body %}

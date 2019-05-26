@@ -57,6 +57,17 @@ def find_products(session):
 
 def add_product_to_cart(product_id,username):
 
+	# query = {'username':username}
+	# result = db['users'].find_one(query)
+
+
+	# if result['cart'].get(product_id):
+	# 	db['users'].update({'username':username },{"$inc":{f"cart.{product_id}":1}})
+	# 	return True
+	# db['users'].update({'username':username },{"$set":{f"cart.{product_id}":1}})
+
+	# # db.users.update( {'username':username},{ '$addToSet': { 'cart': { '$each': [ product_id ] } } })
+
 	query = {'username':username}
 	result = db['users'].find_one(query)
 
@@ -65,8 +76,9 @@ def add_product_to_cart(product_id,username):
 		db['users'].update({'username':username },{"$inc":{f"cart.{product_id}":1}})
 		return True
 	db['users'].update({'username':username },{"$set":{f"cart.{product_id}":1}})
+	# db.users.update( {'username':username},{ '$addToSet': { 'cart': { '$each': [ product_id ]} } })
 
-	# db.users.update( {'username':username},{ '$addToSet': { 'cart': { '$each': [ product_id ] } } })
+
 	
 def remove_prod_from_cart(product_id,username):
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css"></style>
+{% if session['c_type']== 'seller' %}
+
+
+<head>
+<link href="static/style7.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Login , registration, forgot password "./>
+		<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="1 hvr-float-shadow">
+		<form class="2" action="/add_products" method="POST">
+			Product Name: <br>
+			<input class="3" type="text" name="pname" placeholder="Enter the Product name">
+		
+			<br>
+			Price: <br>
+			<input class="4" type="text" name="price" placeholder="Enter the price">
+			<br>
+			Description: <br>
+			<textarea class="5" rows="5" columns="50" name="description" placeholder="Enter description here.."></textarea>
+			<br>
+			<!-- Upload Product's Image: <br> 
+		    <input type="file" name="products" accept="image/gif, image/jpeg, image/png"><br> -->
+			<input class="button" type="submit" value="submit"><br>
+
+		</form>
+		<p class="6">To check all the products you have added <a href='/products_page'>click here</a></p>
+</div>
+{% else %}
+
+		<a href='/products_page'>Click here to buy products </a>
+
+	{% endif %}
+
+</body>
+</html>

@@ -2,7 +2,141 @@
 
 {% block body %}
 
-<h1> youve successfully logged in </h1>
-<h1> welcome {{user}} </h1>
- {% endblock body %}
 
+<head>
+<link href="static/style7.css"  rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Login , registration, forgot password "./>
+<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'/>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+
+<div class="container">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ship.Shop.Shoe</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#1">Home</a></li>
+      <li class="a1"><a href="#">About Us</a></li>
+      <li><a href="/products_page">Products</a></li>
+      <li><a href="{{url_for('logout')}}">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+  
+	<div class="container1" id="#"><br>
+		<p>Hello {{session['username']}}<br>
+		You've logged in as {{session['c_type']}}. <br>
+		Explore to know more about Ship.Shop.Shoe.
+		</p>
+	
+	</div>
+	<div class="a" id="#1">
+		<p> With the ever increasing competition in the E-commerce market, we aim to standout and gather a satisfied customer base by localising the business of E-Commerce which is missing in the market presently!<br>Customer satisfaction will always be the motto at Ship.Shop.shoe by providing quality products and services within a short timeframe from your local vendors, vola!<br> Localising the E-Commerce to the basic customer-seller roots will help vendors to expand their business rapidly.<br>
+      	Due to this local seller community being sidelined by the mainstream shopping sites, they will be immensely benefitted. Since the main idea behind Ship.Shop.Shoe involves empowerment of customer and seller base, we have designed our site in a simplistic hassle free approach which provides a user-friendly interface that can be accessed by any individual and benefit out of it.<br>
+      	We would like to expand our community with your help, and we will be pleased to serve you. Don't hesitate to join us and help your favourite local vendors expand their business. Welcome:) 
+		</p>
+	</div>
+
+</div>
+</div>
+</body>
+
+
+ <!-- <title>Bootstrap Example</title> -->
+  <!-- <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#menu1">About us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" <a href="{{url_for('add_products')}}">Buy!</a>
+    </li>
+    - <li class="nav-item">
+    	<a class="nav-link" dats-toggle="pill" href="cart.html">Cart</a>
+    </li> -->
+   <!--  <li class="nav-item">
+    	<a class="nav-link" data-toggle="pill" href="{{url_for('logout')}}">Logout</a>
+ 
+    </li>
+  </ul> -->
+  <!-- </div> -->
+
+  <!-- Tab panes -->
+<!--   <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h3>About Us</h3>
+      <p>With the ever increasing competition in the E-commerce market, we aim to standout and gather a satisfied customer base by localising the business of E-Commerce which is missing in the market presently!<br>Customer satisfaction will always be the motto at Ship.Shop.shoe by providing quality products and services within a short timeframe from your local vendors, vola! Localising the E-Commerce to the basic customer-seller roots will help vendors to expand their business rapidly.<br>
+      	Due to this local seller community being sidelined by the mainstream shopping sites, they will be immensely benefitted. Since the main idea behind Ship.Shop.Shoe involves empowerment of customer and seller base, we have designed our site in a simplistic hassle free approach which provides a user-friendly interface that can be accessed by any individual and benefit out of it.<br>
+      	We would like to expand our community with your help, and we will be pleased to serve you. Don't hesitate to join us and help your favourite local vendors expand their business. Welcome:) 
+       </p>
+    </div>
+    <div id="products_page" class="container tab-pane fade"><br> -->
+<!--       <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p> -->
+    <!-- </div> -->
+    <!-- <div id="add_cart" class="container tab-pane fade" ></div> -->
+    <!-- <div id="logout" class="container tab-pane fade"></div> -->
+<!-- </div>
+</div>
+</body> -->
+ 
+
+
+<!-- 
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="pill" href="#home">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="pill" href="#menu1">Menu 1</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="pill" href="#menu2">Menu 2</a>
+  </li>
+</ul>
+
+</!-- Tab panes -->
+<!-- <div class="tab-content">
+  <div class="tab-pane container active" id="home">...</div>
+  <div class="tab-pane container fade" id="menu1">...</div>
+  <div class="tab-pane container fade" id="menu2">...</div>
+</div>
+ --> 
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock body %}

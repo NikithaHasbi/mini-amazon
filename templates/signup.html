@@ -1,0 +1,89 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+<h1>Register below to have an amazing shopping experience!</h1>
+<form action="/signup" method="POST">
+	Username:<br>
+	<input type="text" name="username" placeholder="enter username">
+	<br>
+	Email:<br>
+	<input type="text" name="email" placeholder="enter email">
+	<br>
+	Password:<br>
+	<input type="password" name="password" placeholder="enter password">
+	<br><br>
+	Re-enter password:<br>
+	<input type="password" name="rpassword" placeholder="re-enter password">
+	<br><br>
+	Customer Type: <br>
+	<input type="radio" name="c_type" value="buyer" checked> Buyer<br>
+	<input type="radio" name="c_type" value="seller">Seller<br>
+	Upload Your Image: <br>
+	<input type="file" name="users" accept="image/gif, image/jpeg, image/png"><br>
+ 	<input type="submit" value="submit"><br>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Join Us!</title>
+<link href="static/style.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Login , registration, forgot password "./>
+		<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="login-02">
+		<div class="two-login  hvr-float-shadow">
+			<div class="two-login-head">
+					<img src="images/top-note.png" alt=""/>
+					<h2>Register</h2>
+					<lable></lable>
+			</div>
+			<form action="/signup" method="POST">
+				<!-- <li>
+					<input type="text" class="text" value="Invitation Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'code';}" ><a href="#" class=" icon2 num"></a>
+				</li> -->
+				<li>
+					<input type="text" name="username" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'username';}" ><a href="#" class=" icon2 name"></a>
+				</li>
+				<li>
+					<input type="text" name="email" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'email';}" ><a href="#" class=" icon2 user2"></a>
+				</li>
+				<!-- <li style="height:47px;">
+					<select style="height:47px;width:88%;float:right;" type="text" class="text" value="Username" ><a href="#" class=" icon2 user2"></a>
+							<option value="volvo">optional</option>
+							<option value="saab">option 1</option>
+							<option value="opel">option 2</option>
+							<option value="audi">option 3</option>
+						</select>
+						<a href="#" class=" icon2 user2"></a>
+				</li> -->
+				<li>
+					<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"><a href="#" class=" icon2 lock2"></a>
+				</li>
+				<li>
+					<input type="password" name="rpassword" value="Re-Enter Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'rpassword';}"><a href="#" class=" icon2 lock2"></a>
+				</li>
+				<!-- <li>
+					<input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}" ><a href="#" class=" icon2 mail"></a>
+				</li> -->
+				<div class="p-container">
+					<label><input type="radio" name="c_type" value="buyer"  >Buyer<br></label>
+					<label><input type="radio" name="c_type" value="seller" >Seller<br></label>
+				</div>
+				<div class="submit two">
+						<input type="submit"  value="SIGN UP" >
+				</div>
+					<h5>Already a member ?<a href="/login"> Login Here</a></h5>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
